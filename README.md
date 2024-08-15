@@ -1,50 +1,33 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
 ```
+npm i
+npm run dev -- --debug
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+  vite:proxy /api/v2.0/2024/events -> https://frc-api.firstinspires.org/ +25ms
+Requesting frc-api.firstinspires.org//v2.0/2024/events
+{
+  "host": "frc-api.firstinspires.org",
+  "connection": "close",
+  "pragma": "no-cache",
+  "cache-control": "no-cache",
+  "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"",
+  "dnt": "1",
+  "sec-ch-ua-mobile": "?0",
+  "authorization": "Basic dGVydmF5OjAzRjgyQjUzLUMxM0YtNDU1My1BNzZBLTcxNUZDMjY1MjY0QQ==",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "accept": "*/*",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5174/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-US,en;q=0.9"
+}
+  vite:html-fallback Rewriting GET /vite.svg to /index.html +357ms
+  vite:cache [memory] /src/main.tsx +102ms
+  vite:time 3.10ms /index.html +102ms
+Received Response from the Target: 401 {"server":"Kestrel","www-authenticate":"Basic realm=\"FRC Events API\"","date":"Thu, 15 Aug 2024 21:00:23 GMT","connection":"close","content-length":"0"}
+  vite:time 124.91ms /v2.0/2024/events +41ms
+Received Response from the Target: 401 {"server":"Kestrel","www-authenticate":"Basic realm=\"FRC Events API\"","date":"Thu, 15 Aug 2024 21:00:23 GMT","connection":"close","content-length":"0"}
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
